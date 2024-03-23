@@ -25,7 +25,7 @@ import { HttpClient } from '../client/http-client';
  * - Only listens on 127.0.0.1
  * - All requests must include an acceptable Origin header, i.e.
  *   no browsers requests except from a strict whitelist of valid
- *   origins. In prod, that's just app.httptoolkit.tech.
+ *   origins. In prod, that's just juby-httptoolkit.github.io.
  * - Optionally (always set in the HTK app) requires an auth
  *   token with every request, provided by $HTK_SERVER_TOKEN or
  *   --token at startup.
@@ -52,7 +52,7 @@ export class HttpToolkitServerApi extends events.EventEmitter {
         this.server = express();
         this.server.disable('x-powered-by');
 
-        // Allow web pages on non-local URLs (app.httptoolkit.tech, not localhost) to
+        // Allow web pages on non-local URLs (juby-httptoolkit.github.io, not localhost) to
         // send requests to this admin server too. Without this, those requests will
         // fail after rejected preflights in recent Chrome (from ~v102, ish? Unclear).
         this.server.use((req, res, next) => {
